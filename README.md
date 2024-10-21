@@ -1,7 +1,5 @@
 # Mini Wallet Application
-
-This project is for testing purpose 
-
+---
 
 
 # Mini Wallet API
