@@ -94,7 +94,7 @@ Development Notes are as follows.
 
 - Backend Readme [here](./project/backend/README.md)
 
-FrontEnd Readme [here](./project/frontend/README.md)
+- FrontEnd Readme [here](./project/frontend/README.md)
 
 ---
 
