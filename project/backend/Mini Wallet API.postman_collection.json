@@ -1,0 +1,689 @@
+{
+	"info": {
+		"_postman_id": "10e04a1c-c164-4ec1-847d-4b08c7abc03e",
+		"name": "Mini Wallet API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "testuser",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "testuser@example.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "testpassword",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "testuser",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "testpassword",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "refresh_token",
+									"value": "{{refresh_token}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/refresh",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Wallets",
+			"item": [
+				{
+					"name": "Check Balance",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/balance",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"balance"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Check Balance",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMjNhZWUyYmYtNTE1NS00ODIxLWE2YzUtMGY0MzE3OTg2NjZhIiwiZXhwIjoxNzI5NDg0Nzc4fQ.iwUwvCKKmM_54e_g-ZYI00-8xtqh_MvWsl-b_ZT6wKg",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/balance",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"balance"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "TornadoServer/6.4.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 21 Oct 2024 04:22:31 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "\"beea71fdc331bd449c6661efc0a49176209560fa\""
+								},
+								{
+									"key": "Content-Length",
+									"value": "116"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"wallets\": [\n        {\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"balance\": \"993.69\"\n        }\n    ],\n    \"total_balance\": \"993.69\"\n}"
+						}
+					]
+				},
+				{
+					"name": "List Wallets",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/wallets",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"wallets"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Wallets",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZGFiZDNmMDMtNTdhNi00Y2UzLTk0ZGUtOTc3MTVkZTMyYmU5IiwiZXhwIjoxNzI5NDg0MTM1fQ.W5MF2veiuVXk3jxrgrjMC_kiOw_gzFvCuU_vASN0KkY",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/wallets",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"wallets"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "TornadoServer/6.4.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 21 Oct 2024 04:11:16 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "\"c903f8cd020f47c3dcc08b8c14ae352074ef4b74\""
+								},
+								{
+									"key": "Content-Length",
+									"value": "109"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"wallets\": [\n        {\n            \"wallet_id\": \"928b1a3d-2f17-492f-bd52-fbac30c7ef81\",\n            \"balance\": \"3979.65\",\n            \"currency\": \"USD\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Transactions",
+			"item": [
+				{
+					"name": "List Transactions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/transactions",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "wallet_id",
+									"value": "optional_wallet_id",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Transactions",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMjNhZWUyYmYtNTE1NS00ODIxLWE2YzUtMGY0MzE3OTg2NjZhIiwiZXhwIjoxNzI5NDg0Nzc4fQ.iwUwvCKKmM_54e_g-ZYI00-8xtqh_MvWsl-b_ZT6wKg",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/transactions?wallet_id=54ede925-97d1-46ec-bd19-17a232b90851",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "wallet_id",
+											"value": "54ede925-97d1-46ec-bd19-17a232b90851"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "TornadoServer/6.4.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 21 Oct 2024 04:23:34 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "\"72089b8245d0ca96d7f9cff81ec7ddccc72a8525\""
+								},
+								{
+									"key": "Content-Length",
+									"value": "26555"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"transactions\": [\n        {\n            \"transaction_id\": \"0062398e-b0c7-4b69-97ef-4c1ebf51677b\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"450.00\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Transfer from dabd3f03-57a6-4ce3-94de-97715de32be9\",\n            \"created_at\": \"2024-10-21T04:20:37\"\n        },\n        {\n            \"transaction_id\": \"d3c3b0ea-383a-4e17-8e08-d8cea3f08f03\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"450.00\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Transfer from dabd3f03-57a6-4ce3-94de-97715de32be9\",\n            \"created_at\": \"2024-10-21T04:15:22\"\n        },\n        {\n            \"transaction_id\": \"18b76076-553a-4cc8-a3e1-746a6cb59417\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"450.00\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Transfer from dabd3f03-57a6-4ce3-94de-97715de32be9\",\n            \"created_at\": \"2024-10-21T04:06:04\"\n        },\n        {\n            \"transaction_id\": \"d23a4d7b-5136-4508-a52f-a173b3168236\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"188.84\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-10-14T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"97f1856b-93b1-43a7-9d3c-350cf480aa69\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"133.89\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-10-13T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"03ea398d-ea03-474d-9d7e-dcd13dc6bcfc\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"447.50\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2024-10-10T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"8112a06b-0eac-4ae0-99f4-2cef444f1cf1\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"280.05\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"PENDING\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2024-10-05T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"dff60012-7541-4e4c-b836-dc4b7663c9c3\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"62.37\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2024-10-01T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"33a94bef-01ee-4c9c-8ea0-6a9a465cac72\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"175.15\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-10-01T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"ca6d8a90-33cb-4dae-9fec-ce4d2dc04680\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"289.97\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-09-29T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"77812d4a-bf1f-4080-a137-f7b55d669622\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"322.32\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"PENDING\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-09-29T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"6eae739e-1c09-4446-b0a8-b976a839f709\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"169.05\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2024-09-28T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"79aedf70-0cd0-4dd2-b54b-67ff2a1754a2\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"260.19\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2024-09-23T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"3768f833-cd26-4500-b846-ce18ed846162\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"45.62\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2024-09-23T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"7f9fb654-e851-4076-9ea5-172fbb4f1b33\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"265.12\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"PENDING\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2024-09-18T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"e16ac1f4-f510-434d-ae01-deb887da640d\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"349.49\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-09-13T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"c5982b96-6d86-4d75-a46c-84627cedd799\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"254.93\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-09-08T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"cae2179d-1064-4dea-aef5-d0d3c056bbcd\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"202.06\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"PENDING\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-09-08T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"aa8acb09-0a18-4fa4-930f-1b9fbf1e52c1\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"167.77\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"PENDING\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-09-07T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"38365a51-635a-4335-9f7f-186c451fc3f2\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"41.50\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-09-04T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"b977d9b3-9494-4f23-af40-57f6589b7183\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"200.32\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-08-29T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"d0f07505-beb8-4545-a55c-255c98761956\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"332.86\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-08-28T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"7e2e5b73-73b5-4570-b182-2a865b7a299c\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"308.85\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2024-08-23T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"c07ecbe2-57d1-41bd-b310-2f1431d02c2b\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"499.30\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-08-20T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"c5ae6f4d-dd53-416f-ae6b-41cc15da9f21\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"42.58\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2024-08-19T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"8a1c2a84-494c-4db6-ae43-989fa2f7559b\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"70.80\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-08-12T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"471bd1af-18b5-4c98-9ce6-c5ec13500aa4\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"100.52\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"PENDING\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2024-08-08T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"6a334967-cbc1-4664-ae58-353cba273d45\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"220.01\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2024-07-30T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"74f792cc-ae5b-4b45-9d27-15031300cd18\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"68.14\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-07-30T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"de6cd9f7-9d7b-4a11-b377-438ecc67d070\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"52.27\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"PENDING\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2024-07-30T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"ed08b14e-1e4e-46f5-86a3-5299f872b3ee\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"396.57\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-07-29T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"71c76d08-24eb-4957-814c-1a9bb0ad1f0b\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"326.34\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-07-18T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"92e89731-0a41-4fb6-9b61-012e9770d351\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"93.50\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"PENDING\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-07-15T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"929e9e65-8212-487d-9a1e-448078614685\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"157.88\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-07-09T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"f90adb1d-dd14-4117-a069-1ea166774cd6\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"397.49\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-07-07T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"7bfed388-cab4-4f6a-9bd3-fb28b0d07610\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"111.09\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-07-05T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"9fb1b2a4-7824-4d22-941c-49a4517ae6f7\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"122.22\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-07-03T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"3580ffb3-aa9c-4086-a10b-c219e6f34a55\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"479.22\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-06-14T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"e6c71635-ac30-4089-9835-e20de113460e\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"362.57\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-06-12T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"a5ad0346-18c7-497d-86b9-3cf366ebd5ac\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"205.58\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-06-07T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"f8ec0363-306b-4d8b-8de9-e6dfdb248e33\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"60.40\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2024-06-02T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"f3146880-3157-46d0-9538-71461d2102f7\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"242.32\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"PENDING\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-05-30T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"fe99d706-9871-4baa-8f9c-01f2e580c2e2\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"346.09\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-05-29T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"e86d1c1e-021d-40e1-8236-99a3a14610e5\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"298.94\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"PENDING\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-05-27T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"d948931a-ce0e-4bc3-b85b-04490c40dd85\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"89.34\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"PENDING\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-05-26T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"1da727cd-68a8-4694-9706-d806d75e676d\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"308.16\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2024-05-26T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"a6be3dba-19ad-44b0-b62f-07e49f6c253d\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"419.30\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-05-26T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"76184a4f-8deb-4a05-9c22-0b5ebf114e03\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"117.26\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-05-23T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"6598d1f3-489b-490c-87fc-e78c6fff8770\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"249.40\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-05-23T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"20348eb9-0b96-48e8-a172-3dff1c667b67\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"139.23\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-05-20T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"d72df311-128e-458b-9c5b-095b39c7381f\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"387.29\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2024-05-13T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"40ef5408-3836-45c6-94a9-24574f9693f5\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"42.07\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"PENDING\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-05-06T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"3157972d-1cbe-4720-a17f-981288324108\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"157.48\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-05-05T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"baa47bee-6a27-495f-8ecd-f74524eb3387\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"95.09\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"PENDING\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2024-05-02T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"fb15dbf9-eefe-4fe4-acea-e1cf7d52e5c4\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"31.43\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-04-15T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"d13b5633-0659-455f-ab75-0d9a5c409ea3\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"223.04\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2024-04-06T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"eafb5d42-de93-4115-961f-019a6b4b9c3b\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"198.27\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"PENDING\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-04-06T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"5b3f8ee2-5348-4920-8d3f-f503d37364f4\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"107.61\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-04-03T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"8d16623a-0819-4dce-9365-590541d075fb\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"29.04\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-04-03T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"3f35bbf6-e0f1-41d4-9496-3c2e002cebc2\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"243.00\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"PENDING\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2024-03-30T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"dd544294-dfe5-49f3-9de4-526450fd5229\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"298.60\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2024-03-22T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"afca28cc-94aa-4c85-84a3-57f37f8ef6b9\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"273.35\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"PENDING\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-03-19T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"a80b2e70-314b-48d8-b1b5-0c70caa4da51\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"295.29\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-03-18T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"9f2bc51d-3e18-46b5-a0d8-5ee62d2f3759\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"311.97\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-03-17T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"30ef0d80-0b8d-4083-974b-72adf78da416\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"473.58\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2024-03-16T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"4a0f2b23-f2f5-456b-8124-f1f0509e8eb4\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"351.53\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-03-15T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"c43e88d1-08c0-420b-a48d-9728e5ec4cc7\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"331.89\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2024-03-14T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"d28fb8c5-e51c-49d1-9b21-9e5fd598e999\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"286.32\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"PENDING\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-03-11T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"fae4888c-d925-472d-b854-edfce0f19e99\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"103.40\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-03-09T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"f8966279-8e17-4c53-b8d0-9ad358cfcf26\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"22.20\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"PENDING\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-03-06T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"af6c9d9f-ca27-465e-8eae-8688671c7dee\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"124.18\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2024-03-04T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"fd4192de-9dea-496a-ac57-70e62c438ab4\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"464.80\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-03-02T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"6fbc012e-b0f6-4514-b1eb-1f2c8bf46b16\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"443.84\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-02-22T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"c5e432b2-f7b5-4b0b-bb6f-64cd2d0ab97f\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"172.25\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-02-22T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"898d9b24-03bf-4cd4-b99c-d6d4cf820b2e\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"73.92\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"PENDING\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-02-19T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"cb8d50dc-b172-4aca-88d2-e8f72610c075\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"280.27\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-02-19T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"be05f923-b0c6-4f80-9b68-3f61d61e99b9\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"433.02\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-02-09T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"e34afe27-3327-4c4d-b84b-0241dc2570ab\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"434.75\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-02-06T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"bf892552-4da8-41fd-ad8c-75dd23c4b18c\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"151.42\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"PENDING\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-02-06T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"b8287415-a500-4482-bf7e-c5aefc965e2b\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"488.38\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-02-04T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"6a077458-5c8d-4980-83c2-4da28893d135\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"474.45\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-01-30T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"3c8e99c1-1857-48fc-841f-5ceb6f869deb\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"149.99\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-01-27T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"5bc25b1f-126b-4b10-aaa1-3ca27f87c0e2\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"399.01\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-01-18T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"7ac190d2-703b-431d-be8b-89d7f681192d\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"148.83\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"PENDING\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-01-15T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"b8ec8332-df20-461c-ba3b-6dc0d58ad4cb\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"184.58\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-01-15T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"3fa66576-de86-4fdb-9418-a607bd2dc93a\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"491.18\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-01-12T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"b8d4b142-8c20-4303-81bd-50cc79a6bffa\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"28.39\",\n            \"type\": \"WITHDRAWAL\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random withdrawal transaction\",\n            \"created_at\": \"2024-01-11T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"54194ebd-47b4-4d3b-ae21-6f4e576b84ff\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"129.44\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2024-01-06T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"69102ee6-c32a-489e-b04b-62d8ca77aabf\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"111.29\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2024-01-02T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"934b9b0a-d3ef-4461-a39a-9935b7ff753c\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"163.30\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2023-12-29T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"4134ccc9-a2a3-4c30-989f-fa4e7cad7e0e\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"125.06\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2023-12-26T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"df65fa00-a2f8-49c2-b0f7-78b69f19bf64\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"383.99\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2023-12-23T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"6bf32c28-222d-49ec-a136-eb37876d8f24\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"414.75\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2023-12-20T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"6635b458-a123-4879-b236-a8625ebd3ed6\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"285.76\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2023-12-18T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"e6620571-6c72-4a7c-8947-5b9f9b8d27a7\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"276.64\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2023-12-12T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"2ca66e95-f875-4177-ac5f-72f4c4a914ae\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"416.65\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2023-12-11T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"67aa81f5-2e82-4603-9710-d831e0f893a7\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"415.21\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"PENDING\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2023-12-10T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"1b30b180-36e5-45f4-b79f-776a865cddaa\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"471.72\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2023-12-07T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"ce028cb4-c299-4a89-8631-27988ac39605\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"142.22\",\n            \"type\": \"DEPOSIT\",\n            \"status\": \"COMPLETED\",\n            \"description\": \"Random deposit transaction\",\n            \"created_at\": \"2023-12-06T17:26:28.780285\"\n        },\n        {\n            \"transaction_id\": \"b1235323-dd86-4cb7-bf50-415bf605c5ea\",\n            \"wallet_id\": \"54ede925-97d1-46ec-bd19-17a232b90851\",\n            \"amount\": \"305.66\",\n            \"type\": \"TRANSFER\",\n            \"status\": \"FAILED\",\n            \"description\": \"Random transfer transaction\",\n            \"created_at\": \"2023-12-05T17:26:28.780285\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Transfer Money",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "amount",
+									"value": "100.00",
+									"type": "text"
+								},
+								{
+									"key": "recipient_id",
+									"value": "recipient_user_id",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/transfer",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"transfer"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Transfer Money",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZGFiZDNmMDMtNTdhNi00Y2UzLTk0ZGUtOTc3MTVkZTMyYmU5IiwiZXhwIjoxNzI5NDg0NjkzfQ.LMWoQ3oANhQBVPIwoUl8oLSonTV_nxwiUB_teKOx6q8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "amount",
+											"value": "450",
+											"type": "text"
+										},
+										{
+											"key": "recipient_id",
+											"value": "23aee2bf-5155-4821-a6c5-0f431798666a",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/transfer",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transfer"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "TornadoServer/6.4.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 21 Oct 2024 04:20:32 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "61"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Transfer successful\",\n    \"new_balance\": \"13029.65\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Withdraw Money",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "amount",
+									"value": "50.00",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/withdraw",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"withdraw"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Withdraw Money",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZGFiZDNmMDMtNTdhNi00Y2UzLTk0ZGUtOTc3MTVkZTMyYmU5IiwiZXhwIjoxNzI5NDg0MTM1fQ.W5MF2veiuVXk3jxrgrjMC_kiOw_gzFvCuU_vASN0KkY",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "amount",
+											"value": "50.00",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/withdraw",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"withdraw"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "TornadoServer/6.4.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 21 Oct 2024 04:13:54 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "63"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Withdrawal successful\",\n    \"new_balance\": \"13929.65\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Deposit Money",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "amount",
+									"value": "200.00",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/deposit",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"deposit"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Deposit Money",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZGFiZDNmMDMtNTdhNi00Y2UzLTk0ZGUtOTc3MTVkZTMyYmU5IiwiZXhwIjoxNzI5NDg0MTM1fQ.W5MF2veiuVXk3jxrgrjMC_kiOw_gzFvCuU_vASN0KkY",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "amount",
+											"value": "10000",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/deposit",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"deposit"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "TornadoServer/6.4.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 21 Oct 2024 04:13:03 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "60"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Deposit successful\",\n    \"new_balance\": \"13979.65\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8888",
+			"type": "string"
+		},
+		{
+			"key": "jwt_token",
+			"value": "your_jwt_token_here",
+			"type": "string"
+		},
+		{
+			"key": "refresh_token",
+			"value": "your_refresh_token_here",
+			"type": "string"
+		}
+	]
+}

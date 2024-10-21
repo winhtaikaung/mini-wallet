@@ -1,0 +1,6 @@
+tornado/
+*/__pycache__/*
+__pycache__
+*Zone.Identifier
+
+*/*Zone.Identifier/*

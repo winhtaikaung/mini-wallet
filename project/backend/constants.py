@@ -1,0 +1,3 @@
+JWT_SECRET = 'your-secret-key'
+JWT_ALGORITHM = 'HS256'
+JWT_EXP_DELTA_SECONDS = 300 
